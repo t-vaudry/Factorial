@@ -1,13 +1,33 @@
 language: cpp
+
+sudo: required
+dist: trusty
+
+compiler:
+  - gcc
+  - g++
+  - clang
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-5
+    - cmake
+
+before_install:
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
  
+before_script:
+  - mkdir build && cd build
+  - cmake ..
+
 branches:
   only:
    - master
-
-deploy:
-  skip_cleanup: true
  
 before_script: ls
  
 script:
-  - make -f factorial.mk
+  - make -f factorial.mk && cd bin && ./factorial
