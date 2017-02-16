@@ -3,6 +3,9 @@ language: cpp
 branches:
   only:
    - master
+
+deploy:
+  skip_cleanup: true
  
 before_script: ls
  
