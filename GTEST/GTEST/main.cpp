@@ -9,8 +9,6 @@ int factorial(int);
 int main(int argc, char** argv) {
 	::testing::InitGoogleTest(&argc, argv);
 	int returnValue = RUN_ALL_TESTS();
-	int answer = factorial(4);
-	cout << answer << endl;
 
 	system("read");
 	return returnValue;
