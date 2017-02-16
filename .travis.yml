@@ -30,4 +30,4 @@ branches:
 before_script: ls
  
 script:
-  - make -f factorial.mk && cd bin && ./factorial
+  - make -f factorial.mk && ./factorial
