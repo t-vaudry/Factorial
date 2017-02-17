@@ -4,9 +4,7 @@ sudo: required
 dist: trusty
 
 compiler:
-  - gcc
   - g++
-  - clang
 
 addons:
   apt:
@@ -15,6 +13,10 @@ addons:
     packages:
     - g++-5
     - cmake
+  artifacts:
+    s3_region: "ca-central-1"
+    paths:
+    - output-${TRAVIS_BUILD_NUMBER}.zip
 
 before_install:
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
@@ -22,6 +24,9 @@ before_install:
 before_script:
   - mkdir build && cd build
   - cmake ..
+
+after_success:
+    - zip output-${TRAVIS_BUILD_NUMBER} ./test
 
 branches:
   only:

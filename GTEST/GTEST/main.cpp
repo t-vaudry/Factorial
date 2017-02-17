@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <stdlib.h>
 #include "gtest/gtest.h"
 
@@ -22,13 +23,22 @@ int factorial(int a) {
 }
 
 TEST(Factorial, One) {
+	std::ofstream output;
+	output.open("test/test1/test.txt");
 	ASSERT_EQ(1, factorial(1));
+	output.close();
 }
 
 TEST(Factorial, Two) {
+	std::ofstream output;
+	output.open("test/test2/test.txt");
 	ASSERT_EQ(2, factorial(2));
+	output.close();
 }
 
 TEST(Factorial, NegNum) {
+	std::ofstream output;
+	output.open("test/test3/test.txt");
 	ASSERT_NE(-1, factorial(-1));
+	output.close();
 }
